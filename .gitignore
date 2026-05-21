@@ -1,0 +1,6 @@
+.vercel
+.next
+.playwright-cli
+node_modules
+output
+.DS_Store
