@@ -1,0 +1,17 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1920" height="1080" fill="#0A192F"/>
+  <text x="100" y="100" font-family="Arial, sans-serif" font-size="40" fill="#64FFDA" font-weight="bold">MARKET SATURATION SNAPSHOT</text>
+  <g transform="translate(460, 240)">
+    <rect width="200" height="200" fill="#64FFDA" rx="10" opacity="0.9"/>
+    <rect x="220" width="200" height="200" fill="#64FFDA" rx="10" opacity="0.9"/>
+    <rect x="440" width="200" height="200" fill="#64FFDA" rx="10" opacity="0.9"/>
+    <rect x="660" width="200" height="200" fill="#64FFDA" rx="10" opacity="0.9"/>
+    <rect y="220" width="200" height="200" fill="#64FFDA" rx="10" opacity="0.9"/>
+    <rect x="220" y="220" width="200" height="200" fill="#64FFDA" rx="10" opacity="0.9"/>
+    <rect x="440" y="220" width="200" height="200" fill="#64FFDA" rx="10" opacity="0.9"/>
+    <rect x="660" y="220" width="200" height="200" fill="#8892B0" rx="10" opacity="0.2"/>
+    <rect y="440" width="200" height="200" fill="#64FFDA" rx="10" opacity="0.9"/>
+    <rect x="220" y="440" width="200" height="200" fill="#64FFDA" rx="10" opacity="0.9"/>
+  </g>
+  <text x="960" y="950" font-family="Arial, sans-serif" font-size="60" fill="#CCD6F6" text-anchor="middle">90% DHA PENETRATION</text>
+</svg>

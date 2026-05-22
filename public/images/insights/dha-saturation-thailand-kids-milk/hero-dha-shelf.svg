@@ -1,0 +1,18 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1920" height="1080" fill="#0A192F"/>
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#172A45;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0A192F;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#grad1)"/>
+  <g opacity="0.2">
+    <rect x="200" y="200" width="400" height="600" fill="#64FFDA" rx="10"/>
+    <rect x="760" y="200" width="400" height="600" fill="#64FFDA" rx="10"/>
+    <rect x="1320" y="200" width="400" height="600" fill="#64FFDA" rx="10"/>
+  </g>
+  <text x="960" y="540" font-family="Arial, sans-serif" font-size="120" fill="#CCD6F6" text-anchor="middle" font-weight="bold">DHA SATURATION</text>
+  <text x="960" y="620" font-family="Arial, sans-serif" font-size="40" fill="#8892B0" text-anchor="middle">THAILAND KIDS MILK MARKET | 2026</text>
+  <circle cx="960" cy="540" r="400" stroke="#64FFDA" stroke-width="2" fill="none" opacity="0.3"/>
+</svg>

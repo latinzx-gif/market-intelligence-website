@@ -1,0 +1,7 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1920" height="1080" fill="#0A192F"/>
+  <text x="100" y="100" font-family="Arial, sans-serif" font-size="40" fill="#64FFDA" font-weight="bold">REGULATORY LAYER</text>
+  <path d="M960 200 L1300 350 V750 L960 900 L620 750 V350 Z" fill="none" stroke="#64FFDA" stroke-width="8"/>
+  <text x="960" y="520" font-family="Arial, sans-serif" font-size="60" fill="#CCD6F6" text-anchor="middle" font-weight="bold">THAI FDA</text>
+  <text x="960" y="600" font-family="Arial, sans-serif" font-size="30" fill="#8892B0" text-anchor="middle">CLAIM WATCHLIST ACTIVE</text>
+</svg>
