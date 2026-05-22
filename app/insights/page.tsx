@@ -1,4 +1,6 @@
-export const metadata = {
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
   title: "Insights",
   description:
     "Short practical insights on AI systems, market intelligence, and operator workflows from DataClaw.",
@@ -10,6 +12,15 @@ export const metadata = {
 };
 
 const insights = [
+  {
+    title: "The DHA Saturation: Decoding Brain Development Claims",
+    category: "Market Intelligence",
+    summary:
+      "How a premium differentiator became the category baseline in Thailand's kids milk market.",
+    date: "2026-05-22",
+    readTime: "6 min",
+    href: "/insights/dha-saturation-thailand-kids-milk",
+  },
   {
     title: "AI Stack for Solo Founders",
     category: "AI Systems",
@@ -70,15 +81,17 @@ export default function InsightsPage() {
 
       <section className="section insightGrid pageGrid">
         {insights.map((item) => (
-          <article className="insightCard compactCard" key={item.title}>
-            <div className="insightMeta">
-              <span>{item.category}</span>
-              <span>{item.readTime}</span>
-            </div>
-            <h3>{item.title}</h3>
-            <p>{item.summary}</p>
-            <small>{item.date}</small>
-          </article>
+          <a key={item.title} href={item.href || "#"}>
+            <article className="insightCard compactCard">
+              <div className="insightMeta">
+                <span>{item.category}</span>
+                <span>{item.readTime}</span>
+              </div>
+              <h3>{item.title}</h3>
+              <p>{item.summary}</p>
+              <small>{item.date}</small>
+            </article>
+          </a>
         ))}
       </section>
     </main>
