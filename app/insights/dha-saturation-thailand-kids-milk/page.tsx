@@ -54,9 +54,9 @@ export default function DHASaturationPage() {
             differentiator became the category baseline—and what comes next for cognitive positioning.
           </p>
           <div className="ctaRow">
-            <a href="#" className="primaryBtn">
-              Download Framework (PDF)
-            </a>
+            <span className="statusPill" style={{ opacity: 0.6, cursor: 'not-allowed' }}>
+              Framework available soon
+            </span>
           </div>
         </div>
         <div className="detailTakeaway">
