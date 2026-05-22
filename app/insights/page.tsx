@@ -13,10 +13,10 @@ export const metadata: Metadata = {
 
 const insights = [
   {
-    title: "The DHA Saturation: Decoding Brain Development Claims",
+    title: "The DHA Saturation",
     category: "Market Intelligence",
     summary:
-      "How a premium differentiator became the category baseline in Thailand's kids milk market.",
+      "Decoding Brain Development Claims in Thailand's Kids Milk. DHA has shifted from premium differentiator to category expectation. This research asset explores how repeated brain-development claims are reshaping positioning, ingredient stacks, and market differentiation in Thailand's kids milk category.",
     date: "2026-05-22",
     readTime: "6 min",
     href: "/insights/dha-saturation-thailand-kids-milk",
