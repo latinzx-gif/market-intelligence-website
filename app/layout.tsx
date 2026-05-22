@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getSiteUrl } from "../lib/site";
 import "./globals.css";
 import Analytics from "../components/Analytics";
+import { LanguageProvider } from "../components/LanguageContext";
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
@@ -55,8 +56,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Analytics />
-        {children}
+        <LanguageProvider>
+          <Analytics />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );
