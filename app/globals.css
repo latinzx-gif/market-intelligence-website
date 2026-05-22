@@ -1609,6 +1609,13 @@ button.primaryBtn {
     text-align: center;
   }
 
+  .langToggle {
+    grid-column: span 2;
+    justify-content: center;
+    margin-left: 0 !important;
+    margin-top: 8px;
+  }
+
   .section {
     width: min(100% - 22px, 1180px);
     padding: 48px 0;

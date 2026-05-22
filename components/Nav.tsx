@@ -18,18 +18,47 @@ export default function Nav() {
         <a href="/services">{t('nav.services')}</a>
         <a href="/early-access">{t('nav.earlyAccess')}</a>
         
-        <div style={{ marginLeft: '12px', display: 'flex', gap: '4px', borderLeft: '1px solid var(--line)', paddingLeft: '12px' }}>
+        {/* Language Toggle */}
+        <div className="langToggle" style={{ 
+          marginLeft: '8px', 
+          display: 'flex', 
+          gap: '2px', 
+          background: 'var(--pale-blue)', 
+          padding: '2px', 
+          borderRadius: '999px',
+          border: '1px solid var(--line)'
+        }}>
           <button 
             onClick={() => setLang('en')}
-            className={lang === 'en' ? 'statusPill' : 'ghostBtn'}
-            style={{ minHeight: '32px', padding: '0 8px', fontSize: '11px', border: lang === 'en' ? '1px solid var(--blue)' : 'none' }}
+            style={{ 
+              minHeight: '28px', 
+              padding: '0 10px', 
+              fontSize: '10px', 
+              fontWeight: '900',
+              borderRadius: '999px',
+              border: 'none',
+              cursor: 'pointer',
+              background: lang === 'en' ? 'var(--blue)' : 'transparent',
+              color: lang === 'en' ? 'var(--white)' : 'var(--muted)',
+              transition: 'all 0.2s ease'
+            }}
           >
             EN
           </button>
           <button 
             onClick={() => setLang('th')}
-            className={lang === 'th' ? 'statusPill' : 'ghostBtn'}
-            style={{ minHeight: '32px', padding: '0 8px', fontSize: '11px', border: lang === 'th' ? '1px solid var(--blue)' : 'none' }}
+            style={{ 
+              minHeight: '28px', 
+              padding: '0 10px', 
+              fontSize: '10px', 
+              fontWeight: '900',
+              borderRadius: '999px',
+              border: 'none',
+              cursor: 'pointer',
+              background: lang === 'th' ? 'var(--blue)' : 'transparent',
+              color: lang === 'th' ? 'var(--white)' : 'var(--muted)',
+              transition: 'all 0.2s ease'
+            }}
           >
             TH
           </button>
