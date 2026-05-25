@@ -1,3 +1,10 @@
+---
+title: "High-Protein \"Chewy\" Student Snacks - The Functional Confectionery Boom 2026"
+summary: "Analysis of the functional confectionery trend, focusing on high-protein chewy snacks for students."
+tags: ["High-Protein", "Functional Snacks", "Student Nutrition"]
+publishDate: "2026-05-24"
+---
+
 # DataClaw Intelligence Report #004
 
 ## Cover

@@ -2,7 +2,7 @@ import React from 'react';
 import { getCollection } from '../../lib/content';
 
 export default function ReportsList() {
-  const reports = getCollection("Reports");
+  const reports = getCollection("Reports").filter(r => r.slug.startsWith("REPORT-"));
 
   return (
     <div className="insightGrid pageGrid">

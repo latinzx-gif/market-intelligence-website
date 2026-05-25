@@ -1,3 +1,10 @@
+---
+title: "Summary: High-Protein \"Chewy\" Student Snacks"
+summary: "Executive summary of the functional confectionery boom analysis."
+tags: ["Summary", "High-Protein", "Functional Snacks"]
+publishDate: "2026-05-24"
+---
+
 # Summary: DataClaw Intelligence Report #004
 
 **Topic:** High-Protein "Chewy" Student Snacks - Thailand 2026

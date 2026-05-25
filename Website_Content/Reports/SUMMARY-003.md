@@ -1,3 +1,10 @@
+---
+title: "Summary: Psychobiotics & Gut-Brain Axis"
+summary: "Executive summary of the mood-optimized student nutrition research."
+tags: ["Summary", "Psychobiotics", "Gut-Brain Axis"]
+publishDate: "2026-05-24"
+---
+
 # Summary: DataClaw Intelligence Report #003
 
 **Topic:** Psychobiotics & Gut-Brain Axis - Thailand 2026

@@ -1,3 +1,10 @@
+---
+title: "Summary: Thailand Student Focus & Brain Drink Landscape 2026"
+summary: "Executive summary of the Thailand student brain health market analysis."
+tags: ["Summary", "Brain Drink", "Student Focus"]
+publishDate: "2026-05-24"
+---
+
 # Summary: DataClaw Intelligence Report #001
 
 **Topic:** Thailand Student Focus & Brain Drink Landscape 2026

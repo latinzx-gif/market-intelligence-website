@@ -1,3 +1,10 @@
+---
+title: "Thailand Student Focus & Brain Drink Landscape 2026"
+summary: "Comprehensive analysis of the student brain health market in Thailand, including RTD shots and baseline nutrition."
+tags: ["Brain Drink", "Student Focus", "Market Map"]
+publishDate: "2026-05-24"
+---
+
 # DataClaw Intelligence Report #001
 
 ## Cover

@@ -1,3 +1,10 @@
+---
+title: "Summary: Matcha & Plant-Based Focus RTD"
+summary: "Executive summary of the Matcha and plant-based nootropic shift in the student market."
+tags: ["Summary", "Matcha", "Plant-Based"]
+publishDate: "2026-05-24"
+---
+
 # Summary: DataClaw Intelligence Report #002
 
 **Topic:** Matcha & Plant-Based Focus RTD - Thailand 2026

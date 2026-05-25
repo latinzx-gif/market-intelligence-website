@@ -1,3 +1,10 @@
+---
+title: "Psychobiotics & Gut-Brain Axis - Mood-Optimized Student Nutrition 2026"
+summary: "Exploring the gut-brain axis and the emergence of psychobiotics in student-targeted functional foods."
+tags: ["Psychobiotics", "Gut-Brain Axis", "Student Nutrition"]
+publishDate: "2026-05-24"
+---
+
 # DataClaw Intelligence Report #003
 
 ## Cover
