@@ -47,7 +47,7 @@ export default function ReportsPage() {
 
                 <div className="reportsFeaturedMeta">
                   <span className="statusPill">{latestReport.publishDate}</span>
-                  <span className="statusPill reportsFeaturedMetaSecondary">{latestReport.slug}</span>
+                  <span className="statusPill reportsFeaturedMetaSecondary">Premium Intelligence</span>
                 </div>
               </div>
             </article>

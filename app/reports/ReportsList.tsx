@@ -13,7 +13,7 @@ export default function ReportsList() {
         <Link key={report.slug} href={`/reports/${report.slug}`} className="reportCardLink">
           <article className="premium-card reportCard">
             <div className="reportCardCover">
-              <span className="reportCardNumber">{report.slug.replace('REPORT-', '#')}</span>
+              <span className="reportCardNumber">DC</span>
             </div>
 
             <div className="reportCardBody">

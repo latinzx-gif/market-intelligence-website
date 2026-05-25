@@ -701,3 +701,236 @@ main {
     font-size: 2rem;
   }
 }
+
+/* Report Layout V2 */
+.reportLayoutV2 {
+  max-width: 1280px;
+}
+.reportV2Hero {
+  border: 1px solid var(--muted);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+  background: #FCFDFE;
+}
+.reportV2Kicker {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.reportV2HeroTitle {
+  font-size: 64px;
+  line-height: 1.1;
+  margin: 0 0 1rem;
+}
+.reportV2HeroSubtitle {
+  margin: 0 0 1.5rem;
+  color: var(--text-secondary);
+  font-size: 18px;
+  line-height: 1.8;
+  max-width: 920px;
+}
+.reportV2Bento {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+.reportV2BentoCard {
+  border: 1px solid var(--muted);
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 1rem;
+}
+.reportV2BentoCard span {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: #64748B;
+  letter-spacing: 0.08em;
+}
+.reportV2BentoCard p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #1E293B;
+  line-height: 1.55;
+}
+
+.reportV2Sections {
+  display: grid;
+  gap: 1.5rem;
+}
+.reportV2SectionCard {
+  border: 1px solid var(--muted);
+  border-radius: var(--radius-lg);
+  background: white;
+  padding: 1.5rem;
+}
+.reportV2SectionHeader {
+  display: grid;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+}
+.reportV2SectionNumber,
+.reportV2SectionCategory {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: #64748B;
+  letter-spacing: 0.08em;
+}
+.reportV2SectionTitle {
+  margin: 0.25rem 0;
+  font-size: 40px;
+  line-height: 1.12;
+}
+.reportV2SectionSubtitle {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+.reportV2MetaRow {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.35rem;
+}
+.reportV2MetaRow span {
+  border: 1px solid var(--muted);
+  border-radius: 999px;
+  padding: 0.22rem 0.6rem;
+  font-size: 0.75rem;
+  color: #475569;
+}
+.reportV2Confidence {
+  background: #ECFDF5;
+  border-color: #86EFAC;
+}
+.reportV2HeroStatement {
+  margin: 0 0 1rem;
+  padding: 1rem 1.1rem;
+  border-left: 4px solid #0F172A;
+  background: #F8FAFC;
+  font-size: 20px;
+  line-height: 1.7;
+  color: #0F172A;
+}
+.reportV2InsightGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.reportV2InsightCard {
+  border: 1px solid var(--muted);
+  border-radius: var(--radius-md);
+  background: #FCFDFE;
+  padding: 1rem;
+}
+.reportV2InsightCard h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+  color: #0F172A;
+}
+.reportV2InsightCard p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: #1E293B;
+}
+.reportV2InsightCard div {
+  margin-top: 0.7rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--muted);
+}
+.reportV2InsightCard div span {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: #64748B;
+  letter-spacing: 0.08em;
+}
+
+.reportV2MatrixWrap {
+  border: 1px solid var(--muted);
+  border-radius: var(--radius-md);
+  overflow: auto;
+  margin-bottom: 1rem;
+}
+.reportV2Matrix {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+.reportV2Matrix th,
+.reportV2Matrix td {
+  border-bottom: 1px solid var(--muted);
+  padding: 0.75rem;
+  text-align: left;
+  vertical-align: top;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+.reportV2Matrix th {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #64748B;
+  background: #F8FAFC;
+}
+.reportV2EvidenceBlock,
+.reportV2SummaryBox {
+  border: 1px solid var(--muted);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+}
+.reportV2EvidenceBlock {
+  background: #F8FAFC;
+  margin-bottom: 0.75rem;
+}
+.reportV2EvidenceBlock h3,
+.reportV2SummaryBox h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  color: #64748B;
+  letter-spacing: 0.08em;
+}
+.reportV2EvidenceBlock blockquote,
+.reportV2SummaryBox p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #1E293B;
+}
+.reportV2SummaryBox {
+  background: #FFFFFF;
+}
+
+@media (max-width: 1100px) {
+  .reportV2Bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .reportV2SectionTitle {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 768px) {
+  .reportV2Hero {
+    padding: 1.25rem;
+  }
+  .reportV2HeroTitle {
+    font-size: 42px;
+  }
+  .reportV2Bento {
+    grid-template-columns: 1fr;
+  }
+  .reportV2SectionTitle {
+    font-size: 28px;
+  }
+  .reportV2InsightGrid {
+    grid-template-columns: 1fr;
+  }
+}
