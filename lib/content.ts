@@ -41,7 +41,7 @@ function resolveContentRoot() {
 }
 
 const contentRoot = resolveContentRoot();
-const allowedCollections = new Set(["Insights", "Portfolio", "Case_Studies", "Services"]);
+const allowedCollections = new Set(["Insights", "Portfolio", "Case_Studies", "Services", "Reports"]);
 
 function parseScalar(value: string): string | boolean | undefined {
   const cleaned = value.trim();
