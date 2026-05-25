@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Nav from "../components/Nav";
+import Nav from "../../components/Nav";
 import ReportsList from "./ReportsList";
 
 export const metadata: Metadata = {

@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { getCollection, getContentItem } from "../../../lib/content";
-import Nav from "../../components/Nav";
+import Nav from "../../../components/Nav";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
