@@ -26,13 +26,8 @@ export async function generateMetadata({ params }: PageProps) {
   if (!item) return {};
 
   return {
-    title: `${item.title} | DataClaw Report`,
+    title: `${item.title} | DataClaw`,
     description: item.summary,
-    openGraph: {
-      title: item.title,
-      description: item.summary,
-      images: ["/og-image.svg"],
-    },
   };
 }
 
@@ -47,70 +42,66 @@ export default async function ReportDetailPage({ params }: PageProps) {
     <main>
       <Nav />
 
-      <section className="detailHero section">
-        <div>
-          <div className="eyebrow">Intelligence Report Preview</div>
-          <h1>{item.title}</h1>
-          <p>{item.summary}</p>
-          <div className="tags">
-            {item.tags.map((tag) => (
-              <span key={tag}>{tag}</span>
-            ))}
-          </div>
+      {/* Editorial Report Header */}
+      <header style={{ borderBottom: '1px solid var(--muted)', paddingBottom: '3rem', marginBottom: '4rem' }}>
+        <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
+          {item.tags.map(tag => (
+            <span key={tag} className="statusPill" style={{ background: 'var(--text-primary)', color: 'white', border: 'none' }}>{tag}</span>
+          ))}
+          <span className="statusPill" style={{ background: 'transparent', color: 'var(--text-secondary)' }}>{item.publishDate}</span>
         </div>
-        <aside className="detailTakeaway">
-          <span>Strategic Takeaway</span>
-          <strong>{item.takeaway || "Evidence-backed recommendation available in full report."}</strong>
-          <br />
-          <span>Status</span>
-          <span className="statusPill">Available Now</span>
-        </aside>
-      </section>
+        <h1 className="editorial-heading" style={{ fontSize: '4rem', lineHeight: 1.1, marginBottom: '1.5rem', maxWidth: '900px' }}>
+          {item.title}
+        </h1>
+        <p style={{ fontSize: '1.5rem', color: 'var(--text-secondary)', maxWidth: '800px', lineHeight: 1.4 }}>
+          {item.summary}
+        </p>
+      </header>
 
-      <section className="section evidenceSection">
-        <div className="sectionHeader">
-          <span>Core Market Signal</span>
-          <h2>Visual Evidence Module</h2>
-        </div>
-        <div className="evidenceGrid">
-          <InsightVisual
-            item={item}
-            className="reportInsightVisual"
-          />
-          <div className="evidenceCopy">
-            <h3>Visualizing the {item.visualLabel || "Market Trend"}</h3>
-            <p>Our autonomous research agents identified this core signal through cross-referencing retail audits, regulatory filings, and social listening data.</p>
-            <ul className="cleanList">
-              <li><strong>Primary:</strong> {item.primarySignal}</li>
-              <li><strong>Secondary:</strong> {item.secondarySignal}</li>
-              <li><strong>Verification:</strong> {item.evidenceNote}</li>
+      <div style={{ display: 'grid', gridTemplateColumns: '250px 1fr', gap: '4rem' }}>
+        {/* Sticky Sidebar / TOC */}
+        <aside>
+          <div style={{ position: 'sticky', top: '2rem' }}>
+            <span className="eyebrow" style={{ color: 'var(--text-primary)' }}>In This Report</span>
+            <ul style={{ listStyle: 'none', padding: 0, margin: '1rem 0 2rem 0', fontSize: '0.875rem', lineHeight: 2, color: 'var(--text-secondary)' }}>
+              <li><a href="#executive-summary">Executive Summary</a></li>
+              <li><a href="#market-signals">Market Signals</a></li>
+              <li><a href="#visual-evidence">Visual Evidence</a></li>
+              <li><a href="#strategic-takeaway">Strategic Takeaway</a></li>
             </ul>
+            <a href="#" className="btn-primary" style={{ width: '100%', textAlign: 'center' }}>Download PDF</a>
           </div>
-        </div>
-      </section>
+        </aside>
 
-      <section className="section narrativeSection">
-        <div className="sectionHeader">
-          <span>Executive Summary</span>
-          <h2>Ground your strategy in verified market signals.</h2>
-        </div>
-        <div className="narrativeCard">
+        {/* Main Content Area */}
+        <article className="narrativeCard">
+          <h2 id="executive-summary" className="editorial-heading" style={{ fontSize: '2rem', borderBottom: '1px solid var(--muted)', paddingBottom: '0.5rem', marginBottom: '2rem' }}>Executive Summary</h2>
           {body.map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
-        </div>
-      </section>
 
-      <section className="section detailCta">
-        <div>
-          <span className="eyebrow">Full Access</span>
-          <h2>Unlock the complete intelligence package.</h2>
-          <p>Get the raw signal database, retail pricing maps, and Thai FDA trace audits.</p>
-        </div>
-        <a className="primaryBtn" href="/early-access">
-          Request Full Report
-        </a>
-      </section>
+          <h2 id="market-signals" className="editorial-heading" style={{ fontSize: '2rem', borderBottom: '1px solid var(--muted)', paddingBottom: '0.5rem', marginTop: '4rem', marginBottom: '2rem' }}>Core Market Signals</h2>
+          <div className="premium-card" style={{ marginBottom: '3rem', background: 'var(--bg-secondary)', border: 'none' }}>
+            <ul className="cleanList">
+              <li style={{ borderBottomColor: '#E2E8F0' }}><strong>Primary Origin:</strong> {item.primarySignal || 'Verified through retail scanning.'}</li>
+              <li style={{ borderBottomColor: '#E2E8F0' }}><strong>Secondary Origin:</strong> {item.secondarySignal || 'Cross-referenced via social sentiment.'}</li>
+              <li style={{ border: 'none' }}><strong>Confidence Note:</strong> {item.evidenceNote || 'Validated internally.'}</li>
+            </ul>
+          </div>
+
+          <h2 id="visual-evidence" className="editorial-heading" style={{ fontSize: '2rem', borderBottom: '1px solid var(--muted)', paddingBottom: '0.5rem', marginTop: '4rem', marginBottom: '2rem' }}>Visual Evidence</h2>
+          <div style={{ border: '1px solid var(--muted)', borderRadius: 'var(--radius-lg)', overflow: 'hidden', marginBottom: '3rem' }}>
+            <InsightVisual item={item} className="reportInsightVisual" />
+          </div>
+
+          <h2 id="strategic-takeaway" className="editorial-heading" style={{ fontSize: '2rem', borderBottom: '1px solid var(--muted)', paddingBottom: '0.5rem', marginTop: '4rem', marginBottom: '2rem' }}>Strategic Takeaway</h2>
+          <div className="premium-card" style={{ background: 'var(--text-primary)', color: 'white' }}>
+            <p style={{ fontSize: '1.5rem', margin: 0, fontWeight: 300, fontStyle: 'italic', fontFamily: 'var(--font-editorial)' }}>
+              "{item.takeaway || "Evidence-backed recommendation available in full report."}"
+            </p>
+          </div>
+        </article>
+      </div>
     </main>
   );
 }

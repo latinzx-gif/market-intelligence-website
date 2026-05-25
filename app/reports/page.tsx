@@ -4,98 +4,54 @@ import ReportsList from "./ReportsList";
 
 export const metadata: Metadata = {
   title: "Intelligence Reports | DataClaw",
-  description:
-    "DataClaw reports for practical AI, research, and operator decisions. Ground your strategy in verified market signals.",
-  openGraph: {
-    title: "Reports | DataClaw",
-    description:
-      "DataClaw reports for practical AI, research, and operator decisions.",
-  },
+  description: "DataClaw Premium Intelligence Reports.",
 };
-
-const faqs = [
-  {
-    question: "Is this a software setup service?",
-    answer: "No. It is a practical decision guide and starter kit.",
-  },
-  {
-    question: "Does it include automation builds?",
-    answer: "No. Automation can be scoped separately after the workflow is clear.",
-  },
-  {
-    question: "Do I need every tool in the stack?",
-    answer: "No. The report helps you decide what to use now and what to delay.",
-  },
-];
 
 export default function ReportsPage() {
   return (
     <main>
       <Nav />
-      <section className="section detailHero">
+      <section className="section detailHero" style={{ borderBottom: '1px solid var(--muted)', paddingBottom: '3rem' }}>
         <div>
-          <span className="eyebrow">Intelligence Repository</span>
-          <h1>Market Reports</h1>
-          <p>Access in-depth intelligence on Thailand's student focus and functional beverage markets.</p>
+          <span className="eyebrow" style={{ color: 'var(--accent)' }}>Intelligence Repository</span>
+          <h1 className="editorial-heading" style={{ fontSize: '4.5rem', marginBottom: '1rem', letterSpacing: '-0.03em' }}>Research & Reports</h1>
+          <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: '600px' }}>
+            Deep-dive category maps, trend verifications, and structural market shifts. Our reports are built from raw, verifiable signals—not assumptions.
+          </p>
         </div>
       </section>
 
+      {/* Featured Latest Report */}
+      <section className="section" style={{ marginTop: '-2rem' }}>
+        <a href="/reports/REPORT-004" style={{ display: 'block' }}>
+          <article className="premium-card" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', padding: '0', overflow: 'hidden' }}>
+            <div style={{ background: 'var(--bg-secondary)', padding: '4rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div className="visualPackCompare" style={{ background: 'transparent', border: 'none', height: 'auto', padding: 0 }}>
+                <span style={{ borderColor: 'var(--muted)' }} />
+                <span style={{ borderColor: 'var(--muted)' }} />
+                <span style={{ borderColor: 'var(--accent)', background: 'var(--accent)' }} />
+              </div>
+            </div>
+            <div style={{ padding: '4rem 4rem 4rem 0', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <span className="eyebrow">Featured Intelligence</span>
+              <h2 className="editorial-heading" style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>High-Protein "Chewy" Student Snacks</h2>
+              <p style={{ fontSize: '1.125rem', color: 'var(--text-secondary)', marginBottom: '2rem' }}>
+                Analysis of the functional confectionery trend. Texture-rich confectionery is bridging the gap between indulgence and functional energy.
+              </p>
+              <div style={{ display: 'flex', gap: '1rem' }}>
+                <span className="statusPill">Read Time: 15 min</span>
+                <span className="statusPill" style={{ background: 'white', border: '1px solid var(--muted)', color: 'var(--text-primary)' }}>Download PDF</span>
+              </div>
+            </div>
+          </article>
+        </a>
+      </section>
+
       <section className="section">
-        <div className="sectionHeader">
-          <span>Active Research</span>
-          <h2>Available Intelligence Reports</h2>
+        <div className="sectionHeader" style={{ borderBottom: '2px solid var(--text-primary)', paddingBottom: '1rem', marginBottom: '3rem' }}>
+          <h2 className="editorial-heading" style={{ fontSize: '2rem' }}>All Reports</h2>
         </div>
         <ReportsList />
-      </section>
-
-      <section className="section splitSection">
-        <div className="sectionHeader">
-          <span>Featured Toolkit</span>
-          <h2>DataClaw Starter Kit</h2>
-          <p>AI Stack for Solo Founder Thailand.</p>
-        </div>
-        <article className="portfolioCard">
-          <div className="portfolioVisual">
-            <span>KIT</span>
-          </div>
-          <div>
-            <div className="tags">
-              <span>Early Access</span>
-              <span>790 THB</span>
-            </div>
-            <h3>DataClaw Starter Kit</h3>
-            <p>A practical decision guide and starter kit for solo founders.</p>
-            <a href="/early-access" className="detailLink">
-              Join Validation Round
-            </a>
-          </div>
-        </article>
-      </section>
-
-      <section className="section">
-        <div className="sectionHeader">
-          <span>FAQ</span>
-          <h2>Clear scope before purchase.</h2>
-        </div>
-        <div className="insightGrid">
-          {faqs.map((item) => (
-            <article className="insightCard compactCard" key={item.question}>
-              <h3>{item.question}</h3>
-              <p>{item.answer}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="section detailCta">
-        <div>
-          <span className="eyebrow">Custom Research</span>
-          <h2>Need a specific category map?</h2>
-          <p>We build custom intelligence reports for FMCG and retail innovators.</p>
-        </div>
-        <a className="primaryBtn" href="/early-access">
-          Contact Analyst
-        </a>
       </section>
     </main>
   );
