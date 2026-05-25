@@ -3,6 +3,12 @@ title: "Matcha & Plant-Based Focus RTD - The 2026 Student Nootropic Shift"
 summary: "Investigating the rise of Matcha and plant-based alternatives in the student nootropic beverage category."
 tags: ["Matcha", "Plant-Based", "Nootropics"]
 publishDate: "2026-05-24"
+visualTemplate: "trend-signal"
+visualLabel: "Emerging Category"
+primarySignal: "70% Growth in Matcha-Based Functional Drinks"
+secondarySignal: "L-Theanine over Caffeine"
+evidenceNote: "Trend verification via social listening & retail scans."
+takeaway: "Clean-label energy is replacing synthetic stimulants for high-focus tasks."
 ---
 
 # DataClaw Intelligence Report #002

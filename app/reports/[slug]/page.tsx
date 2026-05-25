@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getCollection, getContentItem } from "../../../lib/content";
 import Nav from "../../../components/Nav";
+import { InsightVisual } from "../../components/InsightVisual";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -8,7 +9,7 @@ type PageProps = {
 
 function cleanBody(body: string) {
   return body
-    .split("## Appendix")[0] // Hide appendix in public preview if needed, or keep it.
+    .split("## Appendix")[0]
     .replace(/^#+\s+/gm, "")
     .split(/\n{2,}/)
     .map((part) => part.trim())
@@ -58,12 +59,34 @@ export default async function ReportDetailPage({ params }: PageProps) {
           </div>
         </div>
         <aside className="detailTakeaway">
-          <span>Format</span>
-          <strong>Full Intelligence Report</strong>
+          <span>Strategic Takeaway</span>
+          <strong>{item.takeaway || "Evidence-backed recommendation available in full report."}</strong>
           <br />
           <span>Status</span>
           <span className="statusPill">Available Now</span>
         </aside>
+      </section>
+
+      <section className="section evidenceSection">
+        <div className="sectionHeader">
+          <span>Core Market Signal</span>
+          <h2>Visual Evidence Module</h2>
+        </div>
+        <div className="evidenceGrid">
+          <InsightVisual
+            item={item}
+            className="reportInsightVisual"
+          />
+          <div className="evidenceCopy">
+            <h3>Visualizing the {item.visualLabel || "Market Trend"}</h3>
+            <p>Our autonomous research agents identified this core signal through cross-referencing retail audits, regulatory filings, and social listening data.</p>
+            <ul className="cleanList">
+              <li><strong>Primary:</strong> {item.primarySignal}</li>
+              <li><strong>Secondary:</strong> {item.secondarySignal}</li>
+              <li><strong>Verification:</strong> {item.evidenceNote}</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <section className="section narrativeSection">
@@ -81,7 +104,7 @@ export default async function ReportDetailPage({ params }: PageProps) {
       <section className="section detailCta">
         <div>
           <span className="eyebrow">Full Access</span>
-          <h2>Unlock the complete 60-page report.</h2>
+          <h2>Unlock the complete intelligence package.</h2>
           <p>Get the raw signal database, retail pricing maps, and Thai FDA trace audits.</p>
         </div>
         <a className="primaryBtn" href="/early-access">

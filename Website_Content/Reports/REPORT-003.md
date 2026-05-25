@@ -3,6 +3,12 @@ title: "Psychobiotics & Gut-Brain Axis - Mood-Optimized Student Nutrition 2026"
 summary: "Exploring the gut-brain axis and the emergence of psychobiotics in student-targeted functional foods."
 tags: ["Psychobiotics", "Gut-Brain Axis", "Student Nutrition"]
 publishDate: "2026-05-24"
+visualTemplate: "claim-mapping"
+visualLabel: "Claim Analysis"
+primarySignal: "Rising 'Calm' & 'Mood' Claims in Dairy"
+secondarySignal: "Lactobacillus paracasei PS128 Influence"
+evidenceNote: "Analysis of 15+ emerging functional SKUs in SE Asia."
+takeaway: "Mood-regulation is becoming as valuable as cognitive performance in the functional dairy sector."
 ---
 
 # DataClaw Intelligence Report #003

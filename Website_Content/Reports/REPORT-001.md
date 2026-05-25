@@ -3,6 +3,12 @@ title: "Thailand Student Focus & Brain Drink Landscape 2026"
 summary: "Comprehensive analysis of the student brain health market in Thailand, including RTD shots and baseline nutrition."
 tags: ["Brain Drink", "Student Focus", "Market Map"]
 publishDate: "2026-05-24"
+visualTemplate: "retail-shelf-analysis"
+visualLabel: "Market Penetration"
+primarySignal: "90%+ DHA Penetration in Student Milk"
+secondarySignal: "Acute Performance Support Shift"
+evidenceNote: "Analysis based on 25+ Thai retail shelf audits."
+takeaway: "Ownership of the 'Exam Period' ritual is the primary growth driver for functional shots."
 ---
 
 # DataClaw Intelligence Report #001

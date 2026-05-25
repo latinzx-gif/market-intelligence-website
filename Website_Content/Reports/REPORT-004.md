@@ -3,6 +3,12 @@ title: "High-Protein \"Chewy\" Student Snacks - The Functional Confectionery Boo
 summary: "Analysis of the functional confectionery trend, focusing on high-protein chewy snacks for students."
 tags: ["High-Protein", "Functional Snacks", "Student Nutrition"]
 publishDate: "2026-05-24"
+visualTemplate: "packaging-comparison"
+visualLabel: "Format Innovation"
+primarySignal: "Transition from Liquid to 'Chewy' Formats"
+secondarySignal: "Texture as a Functional Benefit"
+evidenceNote: "Verification through convenience store turnover & viral trends."
+takeaway: "Texture-rich confectionery is bridging the gap between indulgence and functional energy."
 ---
 
 # DataClaw Intelligence Report #004
