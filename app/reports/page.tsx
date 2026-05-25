@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Nav from "../../components/Nav";
 import ReportsList from "./ReportsList";
-import { getCollection } from "../../lib/content";
+import { getCollection, isCanonicalReportSlug } from "../../lib/content";
 
 export const metadata: Metadata = {
   title: "Intelligence Reports | DataClaw",
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ReportsPage() {
   const reports = getCollection("Reports")
-    .filter((report) => report.slug.startsWith("REPORT-"))
+    .filter((report) => isCanonicalReportSlug(report.slug))
     .sort((a, b) => b.publishDate.localeCompare(a.publishDate));
   const latestReport = reports[0];
 

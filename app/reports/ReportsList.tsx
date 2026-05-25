@@ -1,10 +1,10 @@
 import React from 'react';
-import { getCollection } from '../../lib/content';
+import { getCollection, isCanonicalReportSlug } from '../../lib/content';
 import Link from 'next/link';
 
 export default function ReportsList() {
   const reports = getCollection("Reports")
-    .filter((r) => r.slug.startsWith("REPORT-"))
+    .filter((r) => isCanonicalReportSlug(r.slug))
     .sort((a, b) => b.publishDate.localeCompare(a.publishDate));
 
   return (

@@ -8,6 +8,11 @@ export type ContentItem = {
   tags: string[];
   publishDate: string;
   featured: boolean;
+  category?: string;
+  confidence?: string;
+  readTime?: string;
+  relatedReports?: string[];
+  signals?: string[];
   coverImage?: string;
   imageAlt?: string;
   visualTemplate?: string;
@@ -43,11 +48,18 @@ function resolveContentRoot() {
 const contentRoot = resolveContentRoot();
 const allowedCollections = new Set(["Insights", "Portfolio", "Case_Studies", "Services", "Reports"]);
 
-function parseScalar(value: string): string | boolean | undefined {
+function parseScalar(value: string): string | boolean | string[] | undefined {
   const cleaned = value.trim();
   if (!cleaned) return undefined;
   if (cleaned === "true") return true;
   if (cleaned === "false") return false;
+  if (cleaned.startsWith("[") && cleaned.endsWith("]")) {
+    const items = [...cleaned.matchAll(/"([^"]+)"|'([^']+)'|([^,\[\]]+)/g)]
+      .map((match) => match[1] ?? match[2] ?? match[3])
+      .map((item) => item.trim())
+      .filter(Boolean);
+    return items;
+  }
   return cleaned.replace(/^["']|["']$/g, "");
 }
 
@@ -92,6 +104,12 @@ function toTags(value: unknown): string[] {
   return [];
 }
 
+function toStrings(value: unknown): string[] {
+  if (Array.isArray(value)) return value.map(String);
+  if (typeof value === "string" && value.trim()) return [value.trim()];
+  return [];
+}
+
 function toItem(filePath: string): ContentItem {
   const raw = fs.readFileSync(filePath, "utf8");
   const { data, body } = parseFrontmatter(raw);
@@ -104,6 +122,11 @@ function toItem(filePath: string): ContentItem {
     tags: toTags(data.tags),
     publishDate: String(data.publishDate ?? ""),
     featured: Boolean(data.featured),
+    category: data.category ? String(data.category) : undefined,
+    confidence: data.confidence ? String(data.confidence) : undefined,
+    readTime: data.readTime ? String(data.readTime) : undefined,
+    relatedReports: toStrings(data.relatedReports),
+    signals: toStrings(data.signals),
     coverImage: data.coverImage ? String(data.coverImage) : undefined,
     imageAlt: data.imageAlt ? String(data.imageAlt) : undefined,
     visualTemplate: data.visualTemplate ? String(data.visualTemplate) : undefined,
@@ -129,6 +152,14 @@ function toItem(filePath: string): ContentItem {
     icon: data.icon ? String(data.icon) : undefined,
     body,
   };
+}
+
+export function isCanonicalReportSlug(slug: string) {
+  return /^REPORT-\d{3}$/.test(slug);
+}
+
+export function isStrategicInsight(item: ContentItem) {
+  return item.tags.includes("Strategic Insight");
 }
 
 export function getCollection(collection: string): ContentItem[] {

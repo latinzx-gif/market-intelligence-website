@@ -1,106 +1,83 @@
-'use client';
-
-import React from 'react';
-import Nav from '../components/Nav';
-
-const latestIntelligence = [
-  {
-    title: "High-Protein \"Chewy\" Student Snacks",
-    category: "Report #004",
-    summary: "The functional confectionery boom and texture as a functional benefit.",
-    date: "2026-05-24",
-    confidence: "High (25+ Signals)",
-    href: "/reports/REPORT-004",
-  },
-  {
-    title: "Psychobiotics & Gut-Brain Axis",
-    category: "Report #003",
-    summary: "Mood-regulation is becoming as valuable as cognitive performance in the functional dairy sector.",
-    date: "2026-05-24",
-    confidence: "Medium (15+ Signals)",
-    href: "/reports/REPORT-003",
-  },
-  {
-    title: "Matcha & Plant-Based Focus RTD",
-    category: "Report #002",
-    summary: "Clean-label energy is replacing synthetic stimulants for high-focus tasks.",
-    date: "2026-05-24",
-    confidence: "High (30+ Signals)",
-    href: "/reports/REPORT-002",
-  }
-];
-
-const trendingSignals = [
-  { id: "SIG-042", text: "7-Eleven Thailand expands chilled 'Chewy' functional snack shelf space by 15%.", trend: "Up" },
-  { id: "SIG-038", text: "Pantip threads showing 300% increase in 'sleep quality' searches during exam weeks.", trend: "Up" },
-  { id: "SIG-029", text: "Matcha RTD launches outpace traditional energy drinks in Q1 2026.", trend: "Up" },
-  { id: "SIG-015", text: "DHA claims shifting from primary to secondary placement on premium UHT packaging.", trend: "Down" }
-];
-
-const themes = [
-  { name: "Student Focus & Cognitive", count: 124 },
-  { name: "Functional Night-Time", count: 86 },
-  { name: "Gut-Brain Axis", count: 52 },
-  { name: "Alternative Energy", count: 91 }
-];
+import Nav from "../components/Nav";
+import { getCollection, isCanonicalReportSlug, isStrategicInsight } from "../lib/content";
+import { visualSpecs } from "../lib/visual-specs";
 
 export default function HomeContent() {
+  const reports = getCollection("Reports").filter((item) => isCanonicalReportSlug(item.slug));
+  const insights = getCollection("Insights").filter((item) => isStrategicInsight(item));
+
+  const featuredReports = reports.filter((item) => item.featured).slice(0, 4);
+  const strategicBriefs = insights.filter((item) => item.featured).slice(0, 6);
+  const visualReports = visualSpecs
+    .map((spec) => {
+      const report = reports.find((item) => item.slug === spec.reportSlug);
+      if (!report) return null;
+      return { report, spec };
+    })
+    .filter((item): item is NonNullable<typeof item> => Boolean(item))
+    .slice(0, 6);
+
   return (
     <main>
       <Nav />
 
-      {/* Hero Section */}
-      <section className="section detailHero" style={{ maxWidth: '1000px', marginTop: '2rem' }}>
+      <section className="section detailHero" style={{ maxWidth: "1120px", marginTop: "2rem" }}>
         <span className="eyebrow">DataClaw Intelligence Platform</span>
-        <h1 style={{ fontSize: '4rem', marginBottom: '1.5rem', lineHeight: 1.1 }}>
-          Trace-Verified Market Signals.<br/>Zero Market Noise.
+        <h1 style={{ fontSize: "4rem", marginBottom: "1.5rem", lineHeight: 1.02 }}>
+          Premium Market Intelligence
+          <br />
+          for Thailand&apos;s Next Growth Signals.
         </h1>
-        <p style={{ fontSize: '1.25rem', maxWidth: '600px', color: 'var(--text-secondary)' }}>
-          The premium intelligence engine for FMCG innovators and operators in Thailand. We map the unseen shifts in consumer nutrition, wellness, and retail.
+        <p style={{ fontSize: "1.2rem", maxWidth: "720px", color: "var(--text-secondary)" }}>
+          A curated intelligence surface for executives, category teams, and operators. We separate flagship reports,
+          strategic syntheses, and visual-ready market shifts so the website reads like an editorial product, not a file dump.
         </p>
-        
+
         <div className="metricsRow">
           <div className="metricBlock">
-            <span className="val">4</span>
-            <span className="label">Active Reports</span>
+            <span className="val">{reports.length}</span>
+            <span className="label">Canonical Reports</span>
           </div>
           <div className="metricBlock">
-            <span className="val">9</span>
-            <span className="label">Deep Insights</span>
+            <span className="val">{insights.length}</span>
+            <span className="label">Strategic Insights</span>
           </div>
           <div className="metricBlock">
-            <span className="val">342</span>
-            <span className="label">Verified Signals</span>
+            <span className="val">{featuredReports.length}</span>
+            <span className="label">Featured Briefs</span>
           </div>
           <div className="metricBlock">
-            <span className="val">18</span>
-            <span className="label">Source Origins</span>
+            <span className="val">{visualReports.length}</span>
+            <span className="label">Visual-Ready Reports</span>
           </div>
         </div>
       </section>
 
-      {/* Latest Intelligence (Cards) */}
       <section className="section">
-        <div className="sectionHeader" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+        <div className="sectionHeader" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
           <div>
-            <span>Executive Briefings</span>
-            <h2>Latest Intelligence</h2>
+            <span>Flagship Editorial</span>
+            <h2>Featured Reports</h2>
           </div>
-          <a href="/reports" className="btn-primary" style={{ padding: '0.5rem 1rem' }}>View All Reports</a>
+          <a href="/reports" className="btn-primary" style={{ padding: "0.5rem 1rem" }}>
+            View Report Library
+          </a>
         </div>
         <div className="grid-12">
-          {latestIntelligence.map((item, i) => (
-            <a key={i} href={item.href} style={{ gridColumn: 'span 4' }}>
-              <article className="premium-card" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
-                  <span className="statusPill mini" style={{ background: '#F1F5F9', color: 'var(--text-secondary)', border: 'none' }}>{item.category}</span>
-                  <span className="statusPill mini" style={{ background: 'transparent', border: '1px solid var(--muted)', color: 'var(--text-secondary)' }}>{item.date}</span>
+          {featuredReports.map((item, index) => (
+            <a key={item.slug} href={`/reports/${item.slug}`} style={{ gridColumn: index === 0 ? "span 6" : "span 3" }}>
+              <article className="premium-card" style={{ height: "100%", display: "flex", flexDirection: "column", gap: "1rem" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", gap: "1rem", alignItems: "center" }}>
+                  <span className="statusPill mini" style={{ background: "var(--bg-secondary)", color: "var(--text-primary)", border: "1px solid var(--muted)" }}>
+                    {item.slug}
+                  </span>
+                  <span className="eyebrow" style={{ margin: 0 }}>{item.publishDate}</span>
                 </div>
-                <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', flexGrow: 1 }}>{item.title}</h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', marginBottom: '1.5rem' }}>{item.summary}</p>
-                <div style={{ borderTop: '1px solid var(--muted)', paddingTop: '1rem', marginTop: 'auto' }}>
-                  <span style={{ fontSize: '0.75rem', color: 'var(--accent)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                    Confidence: {item.confidence}
+                <h3 style={{ fontSize: index === 0 ? "1.9rem" : "1.2rem", lineHeight: 1.12 }}>{item.title}</h3>
+                <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem" }}>{item.summary}</p>
+                <div style={{ marginTop: "auto", borderTop: "1px solid var(--muted)", paddingTop: "1rem" }}>
+                  <span style={{ fontSize: "0.8rem", color: "var(--accent)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                    {item.visualLabel || "Premium Intelligence"}
                   </span>
                 </div>
               </article>
@@ -109,68 +86,75 @@ export default function HomeContent() {
         </div>
       </section>
 
-      {/* Trending Signals (Horizontal) */}
       <section className="section">
-        <div className="sectionHeader">
-          <span>Raw Data Feed</span>
-          <h2>Trending Signals</h2>
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          {trendingSignals.map((sig, i) => (
-            <div key={i} style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: '1.5rem', 
-              padding: '1.5rem', 
-              background: 'var(--bg-secondary)', 
-              borderRadius: 'var(--radius-sm)',
-              border: '1px solid var(--muted)'
-            }}>
-              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.875rem', color: 'var(--accent)', minWidth: '80px' }}>{sig.id}</span>
-              <p style={{ margin: 0, flexGrow: 1, fontSize: '1.125rem', color: 'var(--text-primary)' }}>{sig.text}</p>
-              <span className={`statusPill ${sig.trend === 'Down' ? 'down' : ''}`} style={{ 
-                borderColor: sig.trend === 'Down' ? '#EF4444' : 'var(--accent)',
-                color: sig.trend === 'Down' ? '#EF4444' : 'var(--accent)'
-              }}>
-                {sig.trend === 'Down' ? '📉 Decelerating' : '📈 Accelerating'}
-              </span>
-            </div>
-          ))}
-        </div>
-        <div style={{ marginTop: '1.5rem', textAlign: 'center' }}>
-          <a href="/signals" className="btn-primary" style={{ background: 'transparent', color: 'var(--text-primary)', border: '1px solid var(--muted)' }}>Explore Signal Database</a>
-        </div>
-      </section>
-
-      {/* Theme Explorer */}
-      <section className="section">
-        <div className="sectionHeader">
-          <span>Intelligence Clusters</span>
-          <h2>Theme Explorer</h2>
+        <div className="sectionHeader" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+          <div>
+            <span>Synthesized Intelligence</span>
+            <h2>Strategic Briefs</h2>
+          </div>
+          <a href="/insights" className="btn-primary" style={{ padding: "0.5rem 1rem" }}>
+            Explore Insights
+          </a>
         </div>
         <div className="grid-12">
-          {themes.map((theme, i) => (
-            <div key={i} style={{ gridColumn: 'span 3' }}>
-              <a href={`/theme`} className="premium-card" style={{ display: 'block', textAlign: 'center', padding: '3rem 1.5rem' }}>
-                <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>{theme.name}</h3>
-                <span style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-mono)' }}>{theme.count} Signals</span>
-              </a>
-            </div>
+          {strategicBriefs.map((item) => (
+            <a key={item.slug} href={`/insights/${item.slug}`} style={{ gridColumn: "span 4" }}>
+              <article className="premium-card" style={{ height: "100%", display: "flex", flexDirection: "column", gap: "0.9rem" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "1rem" }}>
+                  <span className="eyebrow" style={{ margin: 0 }}>{item.category || item.tags[1]}</span>
+                  <span className="statusPill mini" style={{ background: "transparent", border: "1px solid var(--muted)", color: "var(--text-secondary)" }}>
+                    {item.confidence || "Validated"}
+                  </span>
+                </div>
+                <h3 style={{ fontSize: "1.25rem", lineHeight: 1.18 }}>{item.title}</h3>
+                <p style={{ color: "var(--text-secondary)", fontSize: "0.94rem" }}>{item.summary}</p>
+                <div style={{ marginTop: "auto", borderTop: "1px solid var(--muted)", paddingTop: "1rem" }}>
+                  <span style={{ fontSize: "0.78rem", color: "var(--accent)", fontWeight: 600 }}>
+                    {item.relatedReports?.join(" • ") || "Strategic Insight"}
+                  </span>
+                </div>
+              </article>
+            </a>
           ))}
         </div>
       </section>
 
-      <footer style={{ borderTop: '1px solid var(--muted)', paddingTop: '4rem', marginTop: '4rem', display: 'flex', justifyContent: 'space-between', color: 'var(--text-secondary)', fontSize: '0.875rem' }}>
-        <div>
-          <span style={{ fontFamily: 'var(--font-editorial)', fontWeight: 'bold', color: 'var(--text-primary)', fontSize: '1rem' }}>DataClaw Platform</span>
-          <p style={{ marginTop: '0.5rem' }}>Premium Market Intelligence.</p>
+      <section className="section">
+        <div className="sectionHeader">
+          <span>Visual Layer</span>
+          <h2>Data Visual Candidates</h2>
         </div>
-        <div style={{ display: 'flex', gap: '2rem' }}>
-          <a href="/about">About</a>
-          <a href="/sources">Methodology</a>
-          <a href="/privacy">Privacy</a>
+        <div className="grid-12">
+          {visualReports.map(({ report, spec }) => (
+            <a key={report.slug} href={`/signals#${spec.slug}`} style={{ gridColumn: "span 6" }}>
+              <article className="premium-card" style={{ display: "grid", gridTemplateColumns: "1.2fr 0.8fr", gap: "1.5rem", alignItems: "stretch" }}>
+                <div>
+                  <span className="eyebrow">{spec.chartType}</span>
+                  <h3 style={{ fontSize: "1.45rem", lineHeight: 1.14, marginBottom: "0.75rem" }}>{report.title}</h3>
+                  <p style={{ color: "var(--text-secondary)", marginBottom: "1rem" }}>{spec.insight}</p>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
+                    <span className="statusPill mini" style={{ width: "fit-content", background: "var(--bg-secondary)", color: "var(--text-primary)", border: "1px solid var(--muted)" }}>
+                      {spec.supportingMetrics[0] || report.primarySignal || "Key visual signal"}
+                    </span>
+                    <span style={{ fontSize: "0.85rem", color: "var(--text-secondary)" }}>
+                      {spec.supportingMetrics[1] || report.secondarySignal || report.evidenceNote || "Structured for chart, matrix, or comparison card."}
+                    </span>
+                  </div>
+                </div>
+                <div style={{ background: "linear-gradient(180deg, rgba(187,109,61,0.08), rgba(11,18,32,0.03))", border: "1px solid var(--muted)", borderRadius: "16px", padding: "1.25rem", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                  <span className="eyebrow" style={{ color: "var(--text-primary)" }}>{spec.layout}</span>
+                  <div>
+                    <span style={{ display: "block", fontSize: "0.8rem", color: "var(--text-secondary)", marginBottom: "0.5rem" }}>Recommended Treatment</span>
+                    <strong style={{ fontSize: "1.05rem", lineHeight: 1.3 }}>
+                      {spec.chartType}
+                    </strong>
+                  </div>
+                </div>
+              </article>
+            </a>
+          ))}
         </div>
-      </footer>
+      </section>
     </main>
   );
 }

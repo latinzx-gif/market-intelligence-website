@@ -1,61 +1,96 @@
-import React from 'react';
-import Nav from '../../components/Nav';
-
-const signals = [
-  { id: "SIG-042", date: "2026-05-24", text: "7-Eleven Thailand expands chilled 'Chewy' functional snack shelf space by 15%.", trend: "Accelerating", confidence: "High", source: "Retail Audit Bangkok", reports: ["REPORT-004"] },
-  { id: "SIG-038", date: "2026-05-22", text: "Pantip threads showing 300% increase in 'sleep quality' searches during exam weeks.", trend: "Accelerating", confidence: "Medium", source: "Social Listening", reports: ["REPORT-001", "REPORT-005"] },
-  { id: "SIG-029", date: "2026-05-20", text: "Matcha RTD launches outpace traditional energy drinks in Q1 2026.", trend: "Accelerating", confidence: "High", source: "Market Scanner", reports: ["REPORT-002"] },
-  { id: "SIG-015", date: "2026-05-18", text: "DHA claims shifting from primary to secondary placement on premium UHT packaging.", trend: "Decelerating", confidence: "High", source: "Packaging Analysis", reports: ["REPORT-001"] },
-  { id: "SIG-012", date: "2026-05-15", text: "Lactobacillus paracasei PS128 filings increase by 40% in Thai FDA functional dairy applications.", trend: "Accelerating", confidence: "Absolute", source: "Regulatory Audit", reports: ["REPORT-003"] }
-];
+import Nav from "../../components/Nav";
+import { getCollection, getContentItem, isCanonicalReportSlug } from "../../lib/content";
+import { visualSpecs } from "../../lib/visual-specs";
 
 export default function SignalsPage() {
+  const reports = getCollection("Reports").filter((item) => isCanonicalReportSlug(item.slug));
+  const specs = visualSpecs
+    .map((spec) => ({
+      ...spec,
+      report: getContentItem("Reports", spec.reportSlug),
+    }))
+    .filter((item) => item.report && reports.some((report) => report.slug === item.reportSlug));
+
   return (
     <main>
       <Nav />
-      <header style={{ borderBottom: '1px solid var(--muted)', paddingBottom: '3rem', marginBottom: '3rem' }}>
-        <span className="eyebrow" style={{ color: 'var(--accent)' }}>Raw Data Feed</span>
-        <h1 className="editorial-heading" style={{ fontSize: '4rem', marginBottom: '1rem', letterSpacing: '-0.03em' }}>Market Signals</h1>
-        <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: '600px' }}>
-          The unvarnished, trace-verified data points feeding our intelligence engine. Filter by confidence, source, and trend vector.
+      <header className="section detailHero" style={{ paddingBottom: "2rem" }}>
+        <span className="eyebrow" style={{ color: "var(--accent)" }}>Visual Briefing Layer</span>
+        <h1 className="editorial-heading" style={{ fontSize: "4rem", marginBottom: "1rem", letterSpacing: "-0.03em" }}>
+          Graph & Visual Candidates
+        </h1>
+        <p style={{ fontSize: "1.2rem", color: "var(--text-secondary)", maxWidth: "720px" }}>
+          A premium shortlist of reports that justify strong chart treatments, with recommended layouts, metrics, and the
+          commercial point each visual should make.
         </p>
       </header>
 
-      <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
-        <span className="statusPill" style={{ background: 'var(--text-primary)', color: 'white', border: 'none' }}>All Signals</span>
-        <span className="statusPill" style={{ background: 'white', color: 'var(--text-primary)', border: '1px solid var(--muted)' }}>High Confidence</span>
-        <span className="statusPill" style={{ background: 'white', color: 'var(--text-primary)', border: '1px solid var(--muted)' }}>Accelerating</span>
-        <span className="statusPill" style={{ background: 'white', color: 'var(--text-primary)', border: '1px solid var(--muted)' }}>Retail Origins</span>
-      </div>
-
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        {signals.map(sig => (
-           <article key={sig.id} className="premium-card" style={{ padding: '1.5rem', display: 'grid', gridTemplateColumns: '150px 1fr 200px', gap: '2rem', alignItems: 'center' }}>
+      <section className="section">
+        <div className="grid-12">
+          {specs.map((spec, index) => (
+            <article id={spec.slug} key={spec.slug} className="premium-card" style={{ gridColumn: "span 12", padding: "2rem", display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: "2rem", alignItems: "start" }}>
               <div>
-                <span className="eyebrow">{sig.date}</span>
-                <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent)', fontWeight: 600 }}>{sig.id}</span>
-              </div>
-              <div>
-                <p style={{ fontSize: '1.125rem', margin: '0 0 0.5rem 0', fontWeight: 500 }}>{sig.text}</p>
-                <div style={{ display: 'flex', gap: '1.5rem', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
-                  <span><strong>Source:</strong> {sig.source}</span>
-                  <span><strong>Connected:</strong> {sig.reports.join(', ')}</span>
+                <div style={{ display: "flex", justifyContent: "space-between", gap: "1rem", alignItems: "center", marginBottom: "1rem" }}>
+                  <span className="statusPill mini" style={{ background: "var(--bg-secondary)", color: "var(--text-primary)", border: "1px solid var(--muted)" }}>
+                    {spec.chartType}
+                  </span>
+                  <a href={`/reports/${spec.reportSlug}`} className="eyebrow" style={{ margin: 0 }}>
+                    {spec.reportSlug}
+                  </a>
+                </div>
+                <h2 className="editorial-heading" style={{ fontSize: index < 2 ? "2.2rem" : "1.8rem", lineHeight: 1.1, marginBottom: "0.75rem" }}>
+                  {spec.title}
+                </h2>
+                <p style={{ color: "var(--text-secondary)", marginBottom: "1rem", fontSize: "1rem" }}>
+                  {spec.insight}
+                </p>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem", marginBottom: "1rem" }}>
+                  {spec.supportingMetrics.map((metric) => (
+                    <span key={metric} className="statusPill mini" style={{ background: "transparent", color: "var(--accent)", border: "1px solid var(--muted)" }}>
+                      {metric}
+                    </span>
+                  ))}
+                </div>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "1rem" }}>
+                  <div>
+                    <span className="eyebrow" style={{ marginBottom: "0.4rem" }}>Section</span>
+                    <p style={{ margin: 0, color: "var(--text-secondary)" }}>{spec.section}</p>
+                  </div>
+                  <div>
+                    <span className="eyebrow" style={{ marginBottom: "0.4rem" }}>X-Axis</span>
+                    <p style={{ margin: 0, color: "var(--text-secondary)" }}>{spec.xAxis || "Narrative axis"}</p>
+                  </div>
+                  <div>
+                    <span className="eyebrow" style={{ marginBottom: "0.4rem" }}>Y-Axis</span>
+                    <p style={{ margin: 0, color: "var(--text-secondary)" }}>{spec.yAxis || "Commercial intensity"}</p>
+                  </div>
                 </div>
               </div>
-              <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', gap: '0.75rem', alignItems: 'flex-end' }}>
-                 <span className="statusPill mini" style={{ background: 'var(--bg-secondary)', border: '1px solid var(--muted)', color: 'var(--text-primary)' }}>
-                   {sig.confidence} Confidence
-                 </span>
-                 <span className="statusPill mini" style={{ 
-                    borderColor: sig.trend === 'Decelerating' ? '#EF4444' : 'var(--accent)', 
-                    color: sig.trend === 'Decelerating' ? '#EF4444' : 'var(--accent)' 
-                 }}>
-                   {sig.trend === 'Decelerating' ? '📉' : '📈'} {sig.trend}
-                 </span>
+
+              <div style={{ background: "linear-gradient(180deg, rgba(187,109,61,0.08), rgba(11,18,32,0.03))", border: "1px solid var(--muted)", borderRadius: "18px", padding: "1.5rem" }}>
+                <span className="eyebrow" style={{ color: "var(--text-primary)", marginBottom: "1rem" }}>Recommended Layout</span>
+                <h3 style={{ fontSize: "1.25rem", marginBottom: "0.75rem" }}>{spec.layout}</h3>
+                {spec.series ? (
+                  <div style={{ marginBottom: "1rem" }}>
+                    <span style={{ display: "block", fontSize: "0.82rem", color: "var(--text-secondary)", marginBottom: "0.5rem" }}>Series</span>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+                      {spec.series.map((series) => (
+                        <span key={series} className="statusPill mini" style={{ background: "white", color: "var(--text-primary)", border: "1px solid var(--muted)" }}>
+                          {series}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+                <div>
+                  <span style={{ display: "block", fontSize: "0.82rem", color: "var(--text-secondary)", marginBottom: "0.5rem" }}>Connected Report</span>
+                  <strong style={{ lineHeight: 1.4 }}>{spec.report?.title}</strong>
+                </div>
               </div>
-           </article>
-        ))}
-      </div>
+            </article>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }

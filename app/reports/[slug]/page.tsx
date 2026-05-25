@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getCollection, getContentItem } from "../../../lib/content";
+import { getCollection, getContentItem, isCanonicalReportSlug } from "../../../lib/content";
 import Nav from "../../../components/Nav";
 
 type PageProps = {
@@ -105,7 +105,9 @@ function sectionMeta(section: ReportSection, index: number) {
 }
 
 export function generateStaticParams() {
-  return getCollection("Reports").map((item) => ({ slug: item.slug }));
+  return getCollection("Reports")
+    .filter((item) => isCanonicalReportSlug(item.slug))
+    .map((item) => ({ slug: item.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps) {
