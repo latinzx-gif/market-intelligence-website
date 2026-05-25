@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getCollection } from "../lib/content";
+import { getCollection, isCanonicalReportSlug, isStrategicInsight } from "../lib/content";
 import { getSiteUrl } from "../lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -9,6 +9,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.7,
+  }));
+  const reportPages = getCollection("Reports")
+    .filter((item) => isCanonicalReportSlug(item.slug))
+    .map((item) => ({
+      url: `${siteUrl}/reports/${item.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    }));
+  const insightPages = getCollection("Insights")
+    .filter((item) => isStrategicInsight(item))
+    .map((item) => ({
+      url: `${siteUrl}/insights/${item.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    }));
+  const collectionPages = getCollection("Collections").map((item) => ({
+    url: `${siteUrl}/collections/${item.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
   }));
 
   return [
@@ -37,6 +59,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${siteUrl}/collections`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${siteUrl}/signals`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.75,
+    },
+    {
+      url: `${siteUrl}/methodology`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.65,
+    },
+    {
       url: `${siteUrl}/services`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -49,5 +89,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     ...portfolioPages,
+    ...reportPages,
+    ...insightPages,
+    ...collectionPages,
   ];
 }

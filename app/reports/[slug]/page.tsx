@@ -6,6 +6,8 @@ type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
+export const dynamicParams = false;
+
 type ReportBlock = { type: "paragraph" | "bullet"; text: string };
 type ReportSection = { id: string; title: string; blocks: ReportBlock[] };
 type CompetitorRow = { tier: string; positioning: string; products: string; price: string; target: string };
@@ -112,6 +114,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
+  if (!isCanonicalReportSlug(slug)) return {};
   const item = getContentItem("Reports", slug);
   if (!item) return {};
   return { title: `${item.title} | DataClaw`, description: item.summary };
@@ -119,6 +122,7 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function ReportDetailPage({ params }: PageProps) {
   const { slug } = await params;
+  if (!isCanonicalReportSlug(slug)) notFound();
   const item = getContentItem("Reports", slug);
   if (!item) notFound();
 

@@ -12,6 +12,7 @@ export type ContentItem = {
   confidence?: string;
   readTime?: string;
   relatedReports?: string[];
+  relatedInsights?: string[];
   signals?: string[];
   coverImage?: string;
   imageAlt?: string;
@@ -46,7 +47,7 @@ function resolveContentRoot() {
 }
 
 const contentRoot = resolveContentRoot();
-const allowedCollections = new Set(["Insights", "Portfolio", "Case_Studies", "Services", "Reports"]);
+const allowedCollections = new Set(["Insights", "Portfolio", "Case_Studies", "Services", "Reports", "Collections"]);
 
 function normalizeString(value: string) {
   return value.trim().replace(/^["']|["']$/g, "");
@@ -130,6 +131,7 @@ function toItem(filePath: string): ContentItem {
     confidence: data.confidence ? String(data.confidence) : undefined,
     readTime: data.readTime ? String(data.readTime) : undefined,
     relatedReports: toStrings(data.relatedReports),
+    relatedInsights: toStrings(data.relatedInsights),
     signals: toStrings(data.signals),
     coverImage: data.coverImage ? String(data.coverImage) : undefined,
     imageAlt: data.imageAlt ? String(data.imageAlt) : undefined,
@@ -177,6 +179,7 @@ export function getCollection(collection: string): ContentItem[] {
   return fs
     .readdirSync(dir)
     .filter((file) => file.endsWith(".md"))
+    .filter((file) => collection !== "Reports" || /^REPORT-\d{3}\.md$/.test(file))
     .map((file) => toItem(path.join(dir, file)))
     .sort((a, b) => {
       if (a.featured !== b.featured) return a.featured ? -1 : 1;

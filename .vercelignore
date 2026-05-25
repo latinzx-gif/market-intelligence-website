@@ -1,0 +1,4 @@
+Website_Content/Internal_Review/**
+.next/**
+node_modules/**
+output/**
