@@ -48,6 +48,10 @@ function resolveContentRoot() {
 const contentRoot = resolveContentRoot();
 const allowedCollections = new Set(["Insights", "Portfolio", "Case_Studies", "Services", "Reports"]);
 
+function normalizeString(value: string) {
+  return value.trim().replace(/^["']|["']$/g, "");
+}
+
 function parseScalar(value: string): string | boolean | string[] | undefined {
   const cleaned = value.trim();
   if (!cleaned) return undefined;
@@ -56,11 +60,11 @@ function parseScalar(value: string): string | boolean | string[] | undefined {
   if (cleaned.startsWith("[") && cleaned.endsWith("]")) {
     const items = [...cleaned.matchAll(/"([^"]+)"|'([^']+)'|([^,\[\]]+)/g)]
       .map((match) => match[1] ?? match[2] ?? match[3])
-      .map((item) => item.trim())
+      .map((item) => normalizeString(item))
       .filter(Boolean);
     return items;
   }
-  return cleaned.replace(/^["']|["']$/g, "");
+  return normalizeString(cleaned);
 }
 
 function parseFrontmatter(raw: string): { data: Record<string, unknown>; body: string } {
@@ -90,7 +94,7 @@ function parseFrontmatter(raw: string): { data: Record<string, unknown>; body: s
     const values: string[] = [];
     while (i + 1 < lines.length && lines[i + 1].trim().startsWith("- ")) {
       i += 1;
-      values.push(lines[i].trim().replace(/^- /, ""));
+      values.push(normalizeString(lines[i].trim().replace(/^- /, "")));
     }
     data[key] = values;
   }
@@ -99,14 +103,14 @@ function parseFrontmatter(raw: string): { data: Record<string, unknown>; body: s
 }
 
 function toTags(value: unknown): string[] {
-  if (Array.isArray(value)) return value.map(String);
-  if (typeof value === "string" && value.trim()) return [value.trim()];
+  if (Array.isArray(value)) return value.map((item) => normalizeString(String(item)));
+  if (typeof value === "string" && value.trim()) return [normalizeString(value)];
   return [];
 }
 
 function toStrings(value: unknown): string[] {
-  if (Array.isArray(value)) return value.map(String);
-  if (typeof value === "string" && value.trim()) return [value.trim()];
+  if (Array.isArray(value)) return value.map((item) => normalizeString(String(item)));
+  if (typeof value === "string" && value.trim()) return [normalizeString(value)];
   return [];
 }
 

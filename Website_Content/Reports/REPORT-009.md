@@ -1,3 +1,17 @@
+---
+title: "The Exam Anxiety Economy: Mapping the \"Family Mission\" for Student Focus 2027"
+summary: "The Thai student focus market is driven by the \"Family Mission\"—a high-stakes investment period leading up to major entrance exams (M.1). Parents are no longer just buying \"growth vitamins\"; they are seeking infrastruct…"
+tags: ["Student Performance", "Cognitive Market", "DataClaw Intelligence"]
+publishDate: "2026-05-25"
+visualTemplate: "trend-signal"
+visualLabel: "Strategic Shift"
+primarySignal: "The Thai student focus market is driven by the \"Family Mission\"—a high-stakes investment period leading up to major ent…"
+secondarySignal: "Pseudo-ADHD, Screen-Time Recovery, and the M.1 Entrance Exam Ritual"
+evidenceNote: "Staged from legacy report content."
+takeaway: "Ritual Positioning: Market products as an \"Entrance Exam Essential\" for the final 90-day countdown."
+featured: false
+---
+
 # DataClaw Intelligence Report #009
 
 ## Cover
@@ -52,15 +66,15 @@ In the kids' supplement market, the child is the gatekeeper. Parents will not re
 
 > SIG-050 — M.1 Entrance Exam Ritual Observation 2026
 > "The 3 months before M.1 exams are when parents pay the most... tutoring, supplements, whatever is good, they buy."
-> 
+>
 
 > SIG-053 — Social Listening / Parent Exam Anxiety Threads 2026
 > "ลูกอ่านหนังสือเหมือนเข้าหูซ้ายทะลุหูขวา... สอนซ้ำหลายรอบมากแต่พอถามกลับตอบไม่ได้เลย เหมือนสมาธิเขาหลุดไปที่อื่นตลอดเวลา"
-> 
+>
 
 > SIG-054 — Digital Deficit & "Pseudo-ADHD" Fear Analysis 2026
 > "กลัวลูกจะเป็นสมาธิสั้นเทียมเพราะติดมือถือ... เดี๋ยวนี้เด็กใจร้อนขึ้นมาก รออะไรไม่ได้เลย อ่านหนังสือ 10 นาทีก็บ่นเหนื่อยแล้ว"
-> 
+>
 
 > SIG-055 — Shopee/Lazada Reviews / Supplement Compliance Scan 2026
 > "Parents will not repurchase if the taste is 'fishy' or 'medicinal'. Taste is the #1 reason for churn."
